@@ -1,0 +1,9 @@
+{
+  "workbench.tree.indent": 16,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "explorer.compactFolders": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

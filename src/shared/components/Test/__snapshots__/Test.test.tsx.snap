@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Test > renders the App component 1`] = `
+.c0 {
+  color: red;
+  background-color: aliceblue;
+  font-size: 12px;
+}
+
+<div
+  class="c0"
+>
+  Teste
+</div>
+`;
