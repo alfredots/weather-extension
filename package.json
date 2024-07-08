@@ -1,13 +1,13 @@
 {
-  "name": "chrome-extension-react-ts",
-  "displayName": "React.ts Chrome Extension",
+  "name": "weather-extension",
+  "displayName": "Weather Extension",
   "version": "0.0.0",
   "author": "",
   "description": "",
   "type": "module",
   "license": "MIT",
   "keywords": [
-    "chrome-extension",
+    "weather-extension",
     "react",
     "vite",
     "create-chrome-ext"
@@ -26,6 +26,9 @@
     "lint:eslint": "eslint src --max-warnings=0"
   },
   "dependencies": {
+    "@fontsource/roboto": "^5.0.13",
+    "@mui/material": "^5.16.0",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "axios": "^1.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
