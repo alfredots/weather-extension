@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
+import { HttpResponse } from 'infra/models/HttpResponse';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type HttpRequest = {
@@ -8,12 +9,12 @@ type HttpRequest = {
   headers?: any;
 };
 
-export interface HttpClient<R = any> {
-  request: (data: HttpRequest) => Promise<R>;
+export interface HttpClient {
+  request: <R = any>(data: HttpRequest) => Promise<HttpResponse<R>>;
 }
 
 export class AxiosHttpClientAdapter implements HttpClient {
-  async request(data: HttpRequest) {
+  async request(data: HttpRequest): Promise<HttpResponse> {
     let axiosResponse: AxiosResponse;
 
     try {
@@ -28,7 +29,7 @@ export class AxiosHttpClientAdapter implements HttpClient {
     }
 
     return {
-      statusCode: axiosResponse,
+      statusCode: axiosResponse.status,
       body: axiosResponse?.data
     };
   }

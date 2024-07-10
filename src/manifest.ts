@@ -9,14 +9,14 @@ export const manifest = defineManifest({
   version: packageData.version,
   manifest_version: 3,
   icons: {
-    16: 'img/logo-16.png',
-    32: 'img/logo-32.png',
-    48: 'img/logo-48.png',
-    128: 'img/logo-128.png'
+    16: 'img/icon.png',
+    32: 'img/icon.png',
+    48: 'img/icon.png',
+    128: 'img/icon.png'
   },
   action: {
     default_popup: 'popup.html',
-    default_icon: 'img/logo-48.png'
+    default_icon: 'img/icon.png'
   },
   options_page: 'options.html',
   devtools_page: 'devtools.html',
@@ -40,10 +40,10 @@ export const manifest = defineManifest({
   web_accessible_resources: [
     {
       resources: [
-        'img/logo-16.png',
-        'img/logo-32.png',
-        'img/logo-48.png',
-        'img/logo-128.png'
+        'img/icon.png',
+        'img/icon.png',
+        'img/icon.png',
+        'img/icon.png'
       ],
       matches: []
     }

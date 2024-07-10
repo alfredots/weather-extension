@@ -1,4 +1,4 @@
-import { LoadUserList } from '../../domain/use-cases/LoadUserList';
+import { LoadUserList } from '../../domain/repositories/LoadUserList';
 import { HttpClient } from '../adapters/HttpClient';
 
 export const getUserList = (httpClient: HttpClient): LoadUserList => {
