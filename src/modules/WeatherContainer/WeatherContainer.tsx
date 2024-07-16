@@ -20,6 +20,7 @@ export const WeatherContainer = () => {
     updateState({
       cities: [...cities, cityInput]
     });
+
     setCityInput('');
   };
 

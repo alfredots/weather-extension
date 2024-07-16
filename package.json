@@ -37,7 +37,6 @@
     "react-dom": "^18.2.0",
     "react-shadow": "^20.5.0",
     "styled-components": "^6.1.11",
-    "valtio": "^1.13.2",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
