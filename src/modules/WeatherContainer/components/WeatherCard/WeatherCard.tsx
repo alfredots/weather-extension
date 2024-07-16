@@ -1,24 +1,49 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { Typography, Card, CardContent, Box } from '@mui/material';
+import {
+  Typography,
+  Card,
+  CardContent,
+  Box,
+  CardActions,
+  Button
+} from '@mui/material';
 import { GetWeatherData } from 'domain/use-cases/get-weather-data';
 import { WeatherData } from 'domain/entities/WeatherData';
 
 type WeatherCardProps = {
   city: string;
+  onDelete?: () => void;
   getWeatherData: GetWeatherData;
 };
 
 type WeatherCardState = 'loading' | 'ready' | 'error';
 
-const WeatherCardContainer = ({ children }: { children: ReactNode }) => (
+const WeatherCardContainer = ({
+  children,
+  onDelete
+}: {
+  children: ReactNode;
+  onDelete?: () => void;
+}) => (
   <Box mx="4px" my="16px">
     <Card>
       <CardContent>{children}</CardContent>
+      <CardActions>
+        {onDelete && (
+          <Button color="error" onClick={onDelete}>
+            Delete
+          </Button>
+        )}
+      </CardActions>
     </Card>
   </Box>
 );
 
-export const WeatherCard = ({ city, getWeatherData }: WeatherCardProps) => {
+export const WeatherCard = ({
+  city,
+  onDelete,
+  getWeatherData
+}: WeatherCardProps) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [cardState, setCardState] = useState<WeatherCardState>('loading');
 
@@ -37,14 +62,14 @@ export const WeatherCard = ({ city, getWeatherData }: WeatherCardProps) => {
 
   if (cardState === 'loading' || weatherData === null)
     return (
-      <WeatherCardContainer>
+      <WeatherCardContainer onDelete={onDelete}>
         <Typography variant="body1">Loading...</Typography>
       </WeatherCardContainer>
     );
 
   if (cardState === 'error')
     return (
-      <WeatherCardContainer>
+      <WeatherCardContainer onDelete={onDelete}>
         <Typography variant="body1">
           Error: could not retrieve weather data for this city.
         </Typography>
@@ -52,7 +77,7 @@ export const WeatherCard = ({ city, getWeatherData }: WeatherCardProps) => {
     );
 
   return (
-    <WeatherCardContainer>
+    <WeatherCardContainer onDelete={onDelete}>
       <Typography variant="h5">{weatherData.city}</Typography>
       <Typography variant="body1">
         temperature: {Math.round(weatherData.temperature)}

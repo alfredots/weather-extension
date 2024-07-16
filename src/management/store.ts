@@ -7,12 +7,7 @@ export enum Actions {
 export type Action = `${Actions}`;
 
 export const state = proxy({
-  counter: 0,
-  user: {
-    token: '',
-    user: '',
-    password: ''
-  }
+  cities: ['Fortaleza']
 });
 
 export type ExtensionState = typeof state;
