@@ -1,8 +1,6 @@
 import './Options.scss';
-import { useExtensionState } from '../shared/hooks/useExtensionState';
 
 export const Options = () => {
-  const { counter } = useExtensionState();
   const link = 'https://github.com/guocaoyi/create-chrome-ext';
 
   return (

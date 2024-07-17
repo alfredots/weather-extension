@@ -4,37 +4,37 @@ import { makeGetWeatherDataUseCase } from './functions/get-weather-data-factory'
 import { useEffect, useState } from 'react';
 import { Grid, Box, InputBase, IconButton, Paper } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useStore } from 'management/store';
+import { getStoredCities, setStoredCities } from './functions/storage';
 
 export const WeatherContainer = () => {
   const useCase = makeGetWeatherDataUseCase();
-  const { cities, updateStore } = useStore();
   const [cityInput, setCityInput] = useState('');
+  const [cities, setCities] = useState<string[]>([]);
 
   const handleCityButtonClick = () => {
     if (cityInput === '') {
       return;
     }
 
-    updateStore({
-      cities: [...cities, cityInput]
-    });
+    const updatedCities = [...cities, cityInput];
 
-    setCityInput('');
+    setStoredCities(updatedCities).then(() => {
+      setCities(updatedCities);
+      setCityInput('');
+    });
   };
 
   const handleCityDeleteButtonClick = (index: number) => {
-    const temp = [...cities];
-    temp.splice(index, 1);
+    const updatedCities = cities.splice(index, 1);
 
-    updateStore({
-      cities: [...temp]
+    setStoredCities(updatedCities).then(() => {
+      setCities(updatedCities);
     });
   };
 
   useEffect(() => {
-    console.log(cities.toString());
-  }, [cities]);
+    getStoredCities().then((cities) => setCities(cities));
+  }, []);
 
   return (
     <S.Container>
