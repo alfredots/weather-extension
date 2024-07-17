@@ -26,3 +26,11 @@ chrome.runtime.onInstalled.addListener(() => {
     }
   });
 });
+
+chrome.runtime.onMessage.addListener(function (message) {
+  if (message.popupOpen) {
+    chrome.storage.local.get(Object.keys(state), (res) => {
+      Object.assign(state, res);
+    });
+  }
+});
