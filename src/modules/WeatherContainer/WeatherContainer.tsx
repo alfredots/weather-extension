@@ -14,7 +14,7 @@ export const WeatherContainer = () => {
   const [options, setOptions] = useStorageState('options');
 
   const handleCityButtonClick = () => {
-    if (cityInput === '') {
+    if (cityInput === '' || cities === null) {
       return;
     }
 
@@ -25,6 +25,10 @@ export const WeatherContainer = () => {
   };
 
   const handleCityDeleteButtonClick = (index: number) => {
+    if (!cities) {
+      return;
+    }
+
     cities.splice(index, 1);
     const updatedCities = [...cities];
 
@@ -32,6 +36,10 @@ export const WeatherContainer = () => {
   };
 
   const handleTempScaleButtonCLick = () => {
+    if (!options) {
+      return;
+    }
+
     setOptions({
       ...options,
       tempScale: options.tempScale === 'metric' ? 'imperial' : 'metric'
@@ -74,17 +82,20 @@ export const WeatherContainer = () => {
           <Grid item>
             <Paper>
               <Box padding="8px">
-                <IconButton onClick={handleTempScaleButtonCLick}>{options.tempScale === 'metric' ? '\u2103' : '\u2109'}</IconButton>
+                <IconButton onClick={handleTempScaleButtonCLick}>{options?.tempScale === 'metric' ? '\u2103' : '\u2109'}</IconButton>
               </Box>
             </Paper>
           </Grid>
         </Grid>
+        {options !== null && options?.homeCity != '' && (
+          <WeatherCard city={options.homeCity} tempScale={options.tempScale} getWeatherData={useCase.getWeatherData} />
+        )}
 
-        {cities.map((city, index) => (
+        {cities?.map((city, index) => (
           <WeatherCard
             city={city}
             key={index}
-            tempScale={options.tempScale}
+            tempScale={options?.tempScale ?? 'metric'}
             getWeatherData={useCase.getWeatherData}
             onDelete={() => {
               handleCityDeleteButtonClick(index);

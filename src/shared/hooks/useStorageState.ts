@@ -1,10 +1,10 @@
-import { AppState, initialState } from 'management/state';
-import { useEffect, useState } from 'react';
+import { AppState } from 'management/state';
+import { useEffect, useMemo, useState } from 'react';
 import { makeLocalStorage } from 'shared/factories/cache/makeLocalStorage';
 
-export const useStorageState = <K extends keyof AppState>(key: K): [AppState[K], (val: AppState[K]) => void] => {
-  const [value, setValue] = useState<AppState[K]>(initialState[key]);
-  const storage = makeLocalStorage();
+export const useStorageState = <K extends keyof AppState>(key: K): [AppState[K] | null, (val: AppState[K]) => void] => {
+  const [value, setValue] = useState<AppState[K] | null>(null);
+  const storage = useMemo(makeLocalStorage, []);
 
   const setStateValue = (val: AppState[K]) => {
     storage.set({
@@ -29,8 +29,7 @@ export const useStorageState = <K extends keyof AppState>(key: K): [AppState[K],
     storage.get([key]).then((items) => {
       setValue(items[key]);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [key, storage]);
 
   return [value, setStateValue];
 };
