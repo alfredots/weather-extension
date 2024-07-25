@@ -1,30 +1,20 @@
 import { ReactNode, useEffect, useState } from 'react';
-import {
-  Typography,
-  Card,
-  CardContent,
-  Box,
-  CardActions,
-  Button
-} from '@mui/material';
+import { Typography, Card, CardContent, Box, CardActions, Button } from '@mui/material';
 import { GetWeatherData } from 'domain/use-cases/get-weather-data';
 import { WeatherData } from 'domain/entities/WeatherData';
+import { useStorageState } from 'shared/hooks/useStorageState';
+import { OpenWeatherTempScale } from 'domain/external/OpenWeatherData';
 
 type WeatherCardProps = {
   city: string;
+  tempScale: OpenWeatherTempScale;
   onDelete?: () => void;
   getWeatherData: GetWeatherData;
 };
 
 type WeatherCardState = 'loading' | 'ready' | 'error';
 
-const WeatherCardContainer = ({
-  children,
-  onDelete
-}: {
-  children: ReactNode;
-  onDelete?: () => void;
-}) => (
+const WeatherCardContainer = ({ children, onDelete }: { children: ReactNode; onDelete?: () => void }) => (
   <Box mx="4px" my="16px">
     <Card>
       <CardContent>{children}</CardContent>
@@ -39,18 +29,17 @@ const WeatherCardContainer = ({
   </Box>
 );
 
-export const WeatherCard = ({
-  city,
-  onDelete,
-  getWeatherData
-}: WeatherCardProps) => {
+export const WeatherCard = ({ city, tempScale, onDelete, getWeatherData }: WeatherCardProps) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [cardState, setCardState] = useState<WeatherCardState>('loading');
 
   useEffect(() => {
     const init = async () => {
       try {
-        const result = await getWeatherData.execute(city);
+        const result = await getWeatherData.execute({
+          city,
+          scale: tempScale
+        });
         setWeatherData(result as WeatherData);
         setCardState('ready');
       } catch (_error) {
@@ -58,7 +47,7 @@ export const WeatherCard = ({
       }
     };
     init();
-  }, [getWeatherData, city]);
+  }, [getWeatherData, city, tempScale]);
 
   if (cardState === 'loading' || weatherData === null)
     return (
@@ -70,21 +59,15 @@ export const WeatherCard = ({
   if (cardState === 'error')
     return (
       <WeatherCardContainer onDelete={onDelete}>
-        <Typography variant="body1">
-          Error: could not retrieve weather data for this city.
-        </Typography>
+        <Typography variant="body1">Error: could not retrieve weather data for this city.</Typography>
       </WeatherCardContainer>
     );
 
   return (
     <WeatherCardContainer onDelete={onDelete}>
       <Typography variant="h5">{weatherData.city}</Typography>
-      <Typography variant="body1">
-        temperature: {Math.round(weatherData.temperature)}
-      </Typography>
-      <Typography variant="body1">
-        Feels like: {Math.round(weatherData.feelsLike)}
-      </Typography>
+      <Typography variant="body1">temperature: {Math.round(weatherData.temperature)}</Typography>
+      <Typography variant="body1">Feels like: {Math.round(weatherData.feelsLike)}</Typography>
     </WeatherCardContainer>
   );
 };

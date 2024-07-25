@@ -41,3 +41,5 @@ export type OpenWeatherData = {
   name: string;
   cod: number;
 };
+
+export type OpenWeatherTempScale = 'metric' | 'imperial';

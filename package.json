@@ -36,8 +36,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-shadow": "^20.5.0",
-    "styled-components": "^6.1.11",
-    "zustand": "^4.5.4"
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.19",

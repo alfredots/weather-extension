@@ -7,10 +7,8 @@ export const makeGetWeatherDataUseCase = () => {
   const gateway = makeWeatherGateway();
 
   const getWeatherData: GetWeatherData = {
-    execute: async function (
-      city: string
-    ): Promise<WeatherData | DefaultError> {
-      return await gateway.getWeatherData(city);
+    execute: async function ({ city, scale }): Promise<WeatherData | DefaultError> {
+      return await gateway.getWeatherData(city, scale);
     }
   };
 
