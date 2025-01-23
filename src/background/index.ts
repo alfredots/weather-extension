@@ -1,2 +1,2 @@
 export * from './functions/receiveExternalMessage';
-export * from 'management/background';
+export * from './functions/onInstalled';

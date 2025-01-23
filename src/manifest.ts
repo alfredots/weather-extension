@@ -31,7 +31,7 @@ export const manifest = defineManifest({
     },
     {
       matches: ['https://www.google.com/*'],
-      js: ['src/contentScript/googleRender.tsx']
+      js: ['src/contentScript/AppContentScript.tsx']
     }
   ],
   side_panel: {
@@ -39,16 +39,11 @@ export const manifest = defineManifest({
   },
   web_accessible_resources: [
     {
-      resources: [
-        'img/icon.png',
-        'img/icon.png',
-        'img/icon.png',
-        'img/icon.png'
-      ],
+      resources: ['img/icon.png', 'img/icon.png', 'img/icon.png', 'img/icon.png'],
       matches: []
     }
   ],
-  permissions: ['sidePanel', 'storage'],
+  permissions: ['sidePanel', 'storage', 'contextMenus', 'alarms'],
   chrome_url_overrides: {
     newtab: 'newtab.html'
   },

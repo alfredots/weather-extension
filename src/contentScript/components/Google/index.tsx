@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ShadowDom } from '../../../shared/components/ShadowDom';
+import { ShadowDom } from 'shared/components/ShadowDom';
 import * as S from './styles';
 
 export function Google(): React.ReactElement | null {

@@ -1,11 +1,13 @@
 import * as S from './styles';
-import { WeatherCard } from './components/WeatherCard';
-import { makeGetWeatherDataUseCase } from './functions/get-weather-data-factory';
+import { WeatherCard } from 'shared/components/WeatherCard';
+import { makeGetWeatherDataUseCase } from '../../shared/factories/use-cases/get-weather-data-factory';
 import { useState } from 'react';
 import { Grid, Box, InputBase, IconButton, Paper, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { PictureInPicture as PictureInPictureIcon } from '@mui/icons-material';
 import { Actions } from 'management/background';
 import { useStorageState } from 'shared/hooks/useStorageState';
+import { Messages } from 'shared/constants/messages';
 
 export const WeatherContainer = () => {
   const useCase = makeGetWeatherDataUseCase();
@@ -46,6 +48,19 @@ export const WeatherContainer = () => {
     });
   };
 
+  const handleOverlayButtonClick = () => {
+    chrome.tabs.query(
+      {
+        active: true
+      },
+      (tabs) => {
+        if (tabs.length > 0) {
+          chrome.tabs.sendMessage(tabs[0].id || -1, Messages.TOGGLE_OVERLAY);
+        }
+      }
+    );
+  };
+
   const handleByBackground = () => {
     if (cityInput === '') {
       return;
@@ -74,7 +89,7 @@ export const WeatherContainer = () => {
             <Paper>
               <Box padding="12px">
                 <Button color="secondary" onClick={handleByBackground}>
-                  Add by background
+                  Add by Bg
                 </Button>
               </Box>
             </Paper>
@@ -83,6 +98,15 @@ export const WeatherContainer = () => {
             <Paper>
               <Box padding="8px">
                 <IconButton onClick={handleTempScaleButtonCLick}>{options?.tempScale === 'metric' ? '\u2103' : '\u2109'}</IconButton>
+              </Box>
+            </Paper>
+          </Grid>
+          <Grid item>
+            <Paper>
+              <Box padding="8px">
+                <IconButton onClick={handleOverlayButtonClick}>
+                  <PictureInPictureIcon />
+                </IconButton>
               </Box>
             </Paper>
           </Grid>

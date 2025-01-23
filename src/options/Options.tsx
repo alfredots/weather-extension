@@ -1,6 +1,6 @@
 import './Options.css';
 import '@fontsource/roboto';
-import { Card, CardContent, Typography, Grid, TextField, Box, Button } from '@mui/material';
+import { Card, CardContent, Typography, Grid, TextField, Box, Button, Switch } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useStorageState } from 'shared/hooks/useStorageState';
 
@@ -13,6 +13,15 @@ export const Options = () => {
     setOptions({
       ...options,
       homeCity: homeCity
+    });
+  };
+
+  const handleAutoOverlayChange = (hasAutoOverlay: boolean) => {
+    if (options === null) return;
+
+    setOptions({
+      ...options,
+      hasAutoOverlay
     });
   };
 
@@ -34,6 +43,10 @@ export const Options = () => {
               <Grid item>
                 <Typography variant="body1">Home city name</Typography>
                 <TextField placeholder="Enter a home city name" fullWidth value={homeCity} onChange={(e) => setHomeCity(e.target.value)} />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1">Auto toggle overlay on webpage load</Typography>
+                <Switch color="primary" checked={options?.hasAutoOverlay} onChange={(e, checked) => handleAutoOverlayChange(checked)} />
               </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" onClick={handleHomeCitySave}>

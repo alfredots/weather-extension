@@ -1,9 +1,9 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { Typography, Card, CardContent, Box, CardActions, Button } from '@mui/material';
+import { Typography, Card, CardContent, Box, CardActions, Button, Grid } from '@mui/material';
 import { GetWeatherData } from 'domain/use-cases/get-weather-data';
 import { WeatherData } from 'domain/entities/WeatherData';
-import { useStorageState } from 'shared/hooks/useStorageState';
 import { OpenWeatherTempScale } from 'domain/external/OpenWeatherData';
+import './WeatherCard.css';
 
 type WeatherCardProps = {
   city: string;
@@ -21,7 +21,7 @@ const WeatherCardContainer = ({ children, onDelete }: { children: ReactNode; onD
       <CardActions>
         {onDelete && (
           <Button color="error" onClick={onDelete}>
-            Delete
+            <Typography className="weatherCard-body">Delete</Typography>
           </Button>
         )}
       </CardActions>
@@ -49,25 +49,36 @@ export const WeatherCard = ({ city, tempScale, onDelete, getWeatherData }: Weath
     init();
   }, [getWeatherData, city, tempScale]);
 
-  if (cardState === 'loading' || weatherData === null)
+  if (cardState === 'loading' || weatherData === null) {
     return (
       <WeatherCardContainer onDelete={onDelete}>
-        <Typography variant="body1">Loading...</Typography>
+        <Typography className="weatherCard-title">{weatherData?.city}</Typography>
+        <Typography className="weatherCard-body">Loading...</Typography>
       </WeatherCardContainer>
     );
+  }
 
-  if (cardState === 'error')
+  if (cardState === 'error') {
     return (
       <WeatherCardContainer onDelete={onDelete}>
-        <Typography variant="body1">Error: could not retrieve weather data for this city.</Typography>
+        <Typography className="weatherCard-body">Error: could not retrieve weather data for this city.</Typography>
       </WeatherCardContainer>
     );
+  }
 
   return (
     <WeatherCardContainer onDelete={onDelete}>
-      <Typography variant="h5">{weatherData.city}</Typography>
-      <Typography variant="body1">temperature: {Math.round(weatherData.temperature)}</Typography>
-      <Typography variant="body1">Feels like: {Math.round(weatherData.feelsLike)}</Typography>
+      <Grid container justifyContent="space-around">
+        <Grid item>
+          <Typography className="weatherCard-title">{weatherData.city}</Typography>
+          <Typography className="weatherCard-temp">{Math.round(weatherData.temperature)}</Typography>
+          <Typography className="weatherCard-body">Feels like {Math.round(weatherData.feelsLike)}</Typography>
+        </Grid>
+        <Grid item>
+          {weatherData.weatherIconUrl && <img src={weatherData.weatherIconUrl} alt="" />}
+          {weatherData.weatherDescription && <Typography className="weatherCard-body">{weatherData.weatherDescription}</Typography>}
+        </Grid>
+      </Grid>
     </WeatherCardContainer>
   );
 };

@@ -5,6 +5,7 @@ export type AppState = {
   options: {
     homeCity: string;
     tempScale: OpenWeatherTempScale;
+    hasAutoOverlay: boolean;
   };
 };
 
@@ -12,6 +13,7 @@ export const initialState: AppState = {
   cities: [],
   options: {
     homeCity: 'São Luís',
-    tempScale: 'metric'
+    tempScale: 'metric',
+    hasAutoOverlay: true
   }
 };
