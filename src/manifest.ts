@@ -18,8 +18,6 @@ export const manifest = defineManifest({
     default_popup: 'popup.html',
     default_icon: 'img/icon.png'
   },
-  options_page: 'options.html',
-  devtools_page: 'devtools.html',
   background: {
     service_worker: 'src/background/index.ts',
     type: 'module'
@@ -34,20 +32,11 @@ export const manifest = defineManifest({
       js: ['src/contentScript/AppContentScript.tsx']
     }
   ],
-  side_panel: {
-    default_path: 'sidepanel.html'
-  },
   web_accessible_resources: [
     {
       resources: ['img/icon.png', 'img/icon.png', 'img/icon.png', 'img/icon.png'],
       matches: []
     }
   ],
-  permissions: ['sidePanel', 'storage', 'contextMenus', 'alarms'],
-  chrome_url_overrides: {
-    newtab: 'newtab.html'
-  },
-  externally_connectable: {
-    matches: ['http://127.0.0.1:5500/page-test/index.html']
-  }
+  permissions: ['storage', 'contextMenus', 'alarms']
 });
