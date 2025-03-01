@@ -1,26 +1,16 @@
 import createTheme from '@mui/material/styles/createTheme';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { StyleSheetManager } from 'styled-components';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material';
 
-export const ShadowDom = ({
-  parentElement,
-  position = 'beforebegin',
-  children
-}: {
-  parentElement: Element;
-  position?: InsertPosition;
-  children: React.ReactNode;
-}) => {
-  const [shadowHost] = useState(() => document.createElement('my-shadow-host'));
+export const ShadowDom = ({ id, children }: { id: string; children: ReactNode }) => {
+  const [parentElement] = useState(() => document.querySelector('body'));
+  const [shadowHost] = useState(() => document.createElement('div'));
+  shadowHost.id = id;
 
-  const [shadowRoot] = useState(() => shadowHost.attachShadow({ mode: 'open' }));
-  const [target, setTarget] = useState<HTMLElement>();
-
-  const sectionRef = useRef<HTMLElement>(null);
+  const [shadowRoot] = useState(() => shadowHost.attachShadow({ mode: 'closed' }));
 
   const theme = createTheme({
     components: {
@@ -48,32 +38,24 @@ export const ShadowDom = ({
     container: shadowRoot
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (parentElement) {
-      parentElement.insertAdjacentElement(position, shadowHost);
+      parentElement.appendChild(shadowHost);
     }
 
     return () => {
       shadowHost.remove();
     };
-  }, [parentElement, shadowHost, position]);
-
-  useEffect(() => {
-    if (sectionRef.current) {
-      setTarget(sectionRef.current);
-    }
-  }, []);
+  }, [parentElement, shadowHost]);
 
   return ReactDOM.createPortal(
-    <StyleSheetManager target={target}>
-      <CacheProvider value={cache}>
-        <StyledEngineProvider>
-          <ThemeProvider theme={theme}>
-            <section ref={sectionRef}>{children}</section>
-          </ThemeProvider>
-        </StyledEngineProvider>
-      </CacheProvider>
-    </StyleSheetManager>,
+    <CacheProvider value={cache}>
+      <StyledEngineProvider>
+        <ThemeProvider theme={theme}>
+          <section>{children}</section>
+        </ThemeProvider>
+      </StyledEngineProvider>
+    </CacheProvider>,
     shadowRoot
   );
 };

@@ -1,15 +1,6 @@
-import { OpenWeatherTempScale } from 'domain/external/OpenWeatherData';
+import { DataStorageContent } from '@/application/contracts';
 
-export type AppState = {
-  cities: string[];
-  options: {
-    homeCity: string;
-    tempScale: OpenWeatherTempScale;
-    hasAutoOverlay: boolean;
-  };
-};
-
-export const initialState: AppState = {
+export const initialState: DataStorageContent = {
   cities: [],
   options: {
     homeCity: 'São Luís',

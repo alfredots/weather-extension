@@ -2,7 +2,7 @@ import './Options.css';
 import '@fontsource/roboto';
 import { Card, CardContent, Typography, Grid, TextField, Box, Button, Switch } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useStorageState } from 'shared/hooks/useStorageState';
+import { useStorageState } from '@/shared/hooks/use-storage-state';
 
 export const Options = () => {
   const [options, setOptions] = useStorageState('options');

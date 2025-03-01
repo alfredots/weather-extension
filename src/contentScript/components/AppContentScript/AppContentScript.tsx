@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ShadowDom } from 'shared/components/ShadowDom';
 import { WeatherCard } from 'shared/components/WeatherCard';
-import { makeGetWeatherDataUseCase } from 'shared/factories/use-cases/get-weather-data-factory';
-import * as S from './styles';
-import { useStorageState } from 'shared/hooks/useStorageState';
-import { Messages } from 'shared/constants/messages';
+
+import { useStorageState } from '@/shared/hooks/use-storage-state';
+import { Messages } from '@/main/enums';
+import { makeGetWeatherData } from '@/main/use-cases';
 
 export const AppContentScript = () => {
-  const useCase = makeGetWeatherDataUseCase();
+  const getWeatherData = useMemo(() => makeGetWeatherData(), []);
   const [isActive, setIsActive] = useState(false);
   const [parentElement] = useState(() => document.querySelector('body'));
   const [options] = useStorageState('options');
-  console.log(options);
 
   useEffect(() => {
     if (options?.hasAutoOverlay) {
@@ -28,15 +27,16 @@ export const AppContentScript = () => {
   }, [isActive]);
 
   return isActive && parentElement && options?.homeCity ? (
-    <ShadowDom parentElement={parentElement}>
-      <S.OverlayCard>
+    <ShadowDom id="overlay-content">
+      <div style={{ position: 'fixed', left: '5%', top: '15%', maxWidth: '240px', maxHeight: '240px', backgroundColor: '#f5f5f5' }}>
         <WeatherCard
           city={options.homeCity}
           tempScale={options.tempScale}
-          getWeatherData={useCase.getWeatherData}
+          getWeatherData={getWeatherData}
           onDelete={() => setIsActive(false)}
+          isModal={true}
         />
-      </S.OverlayCard>
+      </div>
     </ShadowDom>
   ) : null;
 };

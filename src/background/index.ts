@@ -1,2 +1,1 @@
-export * from './functions/receiveExternalMessage';
-export * from './functions/onInstalled';
+export * from './functions/on-installed';

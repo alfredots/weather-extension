@@ -18,15 +18,12 @@ export const manifest = defineManifest({
     default_popup: 'popup.html',
     default_icon: 'img/icon.png'
   },
+  options_page: 'options.html',
   background: {
     service_worker: 'src/background/index.ts',
     type: 'module'
   },
   content_scripts: [
-    {
-      matches: ['http://*/*', 'https://*/*'],
-      js: ['src/contentScript/index.ts']
-    },
     {
       matches: ['https://www.google.com/*'],
       js: ['src/contentScript/AppContentScript.tsx']
