@@ -25,7 +25,7 @@ export const manifest = defineManifest({
   },
   content_scripts: [
     {
-      matches: ['<all_urls>'],
+      matches: ['*://www.google.com.br/*', '*://www.google.com/*'],
       js: ['src/content-script/AppContentScript.tsx']
     }
   ],
