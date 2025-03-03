@@ -1,4 +1,4 @@
-import { WeatherContainer } from 'modules/WeatherContainer';
+import { WeatherContainer } from '@/modules/weather';
 import * as S from './styles';
 
 export const Popup = () => {

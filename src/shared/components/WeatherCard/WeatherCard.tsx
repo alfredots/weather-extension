@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Typography, Card, CardContent, Box, CardActions, Button, Grid } from '@mui/material';
 import { GetWeatherData } from 'domain/use-cases/get-weather-data';
-import { OpenWeatherTempScale } from '@/application/dto/open-weather-data';
+import { OpenWeatherTempScale } from '@/application/dto/weather-data-dto';
 import { useWeatherCard } from '@/shared/components/WeatherCard/use-weather-card';
 import './WeatherCard.css';
 

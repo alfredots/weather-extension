@@ -1,6 +1,6 @@
-import { OpenWeatherTempScale } from '@/application/dto/open-weather-data';
+import { OpenWeatherTempScale } from '@/application/dto/weather-data-dto';
 
-export type DataStorageContent = {
+export type LocalStorageContent = {
   cities: string[];
   options: {
     homeCity: string;

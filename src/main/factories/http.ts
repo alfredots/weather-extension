@@ -1,4 +1,4 @@
-import { HttpClient } from '@/application/protocols';
 import { AxiosHttpClient } from '@/infra/http';
+import { IHttpClient } from '@/infra/http/http-client-contract';
 
-export const makeHttpClient = (): HttpClient => new AxiosHttpClient();
+export const makeHttpClient = (): IHttpClient => new AxiosHttpClient();

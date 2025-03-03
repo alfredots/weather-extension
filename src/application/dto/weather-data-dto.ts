@@ -1,4 +1,4 @@
-export type OpenWeatherData = {
+export type WeatherDataDto = {
   coord: {
     lon: number;
     lat: number;

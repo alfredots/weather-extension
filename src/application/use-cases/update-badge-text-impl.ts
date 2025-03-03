@@ -1,13 +1,13 @@
-import { WeatherGateway } from '@/application/gateways';
-import { DataStorage } from '@/application/protocols';
-import { ExtensionProvider } from '@/application/providers/extension-provider';
+import { IWeatherGateway } from '@/application/gateways';
+import { IExtensionProvider } from '@/application/providers/extension-provider';
 import { UpdateBadgeText } from '@/domain/use-cases/update-badge-text';
+import { ILocalStorage } from '@/infra/cache/local-storage-contract';
 
 export class UpdateBadgeTextImpl implements UpdateBadgeText {
   constructor(
-    private readonly storage: DataStorage,
-    private readonly weatherGateway: WeatherGateway,
-    private readonly extensionProvider: ExtensionProvider
+    private readonly storage: ILocalStorage,
+    private readonly weatherGateway: IWeatherGateway,
+    private readonly extensionProvider: IExtensionProvider
   ) {}
 
   async execute(): Promise<void> {

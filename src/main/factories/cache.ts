@@ -1,4 +1,4 @@
-import { DataStorage } from '@/application/protocols';
 import { LocalStorageAdapter } from '@/infra/cache';
+import { ILocalStorage } from '@/infra/cache/local-storage-contract';
 
-export const makeLocalStorage = (): DataStorage => new LocalStorageAdapter();
+export const makeLocalStorage = (): ILocalStorage => new LocalStorageAdapter();

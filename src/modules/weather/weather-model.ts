@@ -1,8 +1,13 @@
+import { GetWeatherData } from '@/domain/use-cases/get-weather-data';
 import { Messages, Actions } from '@/main/enums';
 import { useStorageState } from '@/shared/hooks/use-storage-state';
 import { useState } from 'react';
 
-export const useWeatherContainer = () => {
+type UseWeatherModelProps = {
+  getWeatherData: GetWeatherData;
+};
+
+export const useWeatherModel = ({ getWeatherData }: UseWeatherModelProps) => {
   const [cityInput, setCityInput] = useState('');
   const [cities, setCities] = useStorageState('cities');
   const [options, setOptions] = useStorageState('options');
@@ -72,6 +77,7 @@ export const useWeatherContainer = () => {
     options,
     cityInput,
     setCityInput,
-    cities
+    cities,
+    getWeatherData
   };
 };

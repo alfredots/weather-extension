@@ -1,26 +1,26 @@
+import { useWeatherModel } from '@/modules/weather/weather-model';
 import * as S from './styles';
+
 import { WeatherCard } from 'shared/components/WeatherCard';
-import { useMemo } from 'react';
 import { Grid, Box, InputBase, IconButton, Paper, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { PictureInPicture as PictureInPictureIcon } from '@mui/icons-material';
-import { useWeatherContainer } from '@/modules/WeatherContainer/hooks/use-weather-container';
-import { makeGetWeatherData } from '@/main/use-cases';
 
-export const WeatherContainer = () => {
-  const getWeatherData = useMemo(() => makeGetWeatherData(), []);
+type WeatherViewProps = ReturnType<typeof useWeatherModel>;
 
+export const WeatherView = (props: WeatherViewProps) => {
   const {
+    cities,
+    cityInput,
+    getWeatherData,
+    handleByBackground,
     handleCityButtonClick,
     handleCityDeleteButtonClick,
-    handleTempScaleButtonCLick,
     handleOverlayButtonClick,
-    handleByBackground,
+    handleTempScaleButtonCLick,
     options,
-    cityInput,
-    setCityInput,
-    cities
-  } = useWeatherContainer();
+    setCityInput
+  } = props;
 
   return (
     <S.Container>

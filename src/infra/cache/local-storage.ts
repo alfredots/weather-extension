@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DataStorage } from '@/application/protocols';
 
-export class LocalStorageAdapter implements DataStorage {
+import { ILocalStorage } from '@/infra/cache/local-storage-contract';
+
+export class LocalStorageAdapter implements ILocalStorage {
   set(data: Partial<Storage>): Promise<void> {
     return new Promise((resolve) => {
       chrome.storage.local.set(data, () => {

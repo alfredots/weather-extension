@@ -1,12 +1,14 @@
-import { DataStorageContent } from '@/application/contracts';
+import { LocalStorageContent } from '@/application/contracts';
 import { makeLocalStorage } from '@/main/factories/cache';
 import { useEffect, useMemo, useState } from 'react';
 
-export const useStorageState = <K extends keyof DataStorageContent>(key: K): [DataStorageContent[K] | null, (val: DataStorageContent[K]) => void] => {
-  const [value, setValue] = useState<DataStorageContent[K] | null>(null);
+export const useStorageState = <K extends keyof LocalStorageContent>(
+  key: K
+): [LocalStorageContent[K] | null, (val: LocalStorageContent[K]) => void] => {
+  const [value, setValue] = useState<LocalStorageContent[K] | null>(null);
   const storage = useMemo(() => makeLocalStorage(), []);
 
-  const setStateValue = (val: DataStorageContent[K]) => {
+  const setStateValue = (val: LocalStorageContent[K]) => {
     storage.set({
       [key]: val
     });

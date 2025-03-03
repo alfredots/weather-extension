@@ -1,3 +1,3 @@
-import { ExtensionProvider, ExtensionProviderImpl } from '@/application/providers/extension-provider';
+import { ExtensionProvider, IExtensionProvider } from '@/application/providers/extension-provider';
 
-export const makeExtensionProvider = (): ExtensionProvider => new ExtensionProviderImpl();
+export const makeExtensionProvider = (): IExtensionProvider => new ExtensionProvider();

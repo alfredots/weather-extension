@@ -1,7 +1,7 @@
 import { WeatherData } from '@/domain/entities';
 import { GetWeatherData } from '@/domain/use-cases/get-weather-data';
 import { useAsyncReducer } from '@/shared/hooks/use-async-reducer';
-import { OpenWeatherTempScale } from '@/application/dto/open-weather-data';
+import { OpenWeatherTempScale } from '@/application/dto/weather-data-dto';
 import { useCallback, useEffect } from 'react';
 
 export const useWeatherCard = (city: string, scale: OpenWeatherTempScale, getWeatherData: GetWeatherData) => {

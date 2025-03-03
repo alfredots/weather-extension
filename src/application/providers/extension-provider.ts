@@ -1,8 +1,8 @@
-export interface ExtensionProvider {
+export interface IExtensionProvider {
   setBadgeText(text: string): void;
 }
 
-export class ExtensionProviderImpl implements ExtensionProvider {
+export class ExtensionProvider implements IExtensionProvider {
   setBadgeText(text: string) {
     chrome.action.setBadgeText({
       text

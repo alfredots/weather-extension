@@ -23,6 +23,6 @@ export type HttpRequest = {
   headers?: any;
 };
 
-export interface HttpClient {
+export interface IHttpClient {
   request<R = any>(data: HttpRequest): Promise<HttpResponse<R>>;
 }

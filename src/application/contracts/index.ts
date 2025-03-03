@@ -1,1 +1,1 @@
-export * from './data-storage-content';
+export * from './local-storage-content';
