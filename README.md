@@ -1,7 +1,3 @@
-<p align="center" style="background: #fff">
-  <img alt="Logo DevRise Week" title="#alfredots-apps" src="./src/assets/images/logo.svg" width="250px" />
-</p>
-
 <h1 align="center">
 🌤️ Weather Extension :🌤️
 </h1>
