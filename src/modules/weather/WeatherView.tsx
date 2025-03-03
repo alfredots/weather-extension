@@ -6,9 +6,7 @@ import { Grid, Box, InputBase, IconButton, Paper, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { PictureInPicture as PictureInPictureIcon } from '@mui/icons-material';
 
-type WeatherViewProps = ReturnType<typeof useWeatherModel>;
-
-export const WeatherView = (props: WeatherViewProps) => {
+export const WeatherView = (props: ReturnType<typeof useWeatherModel>) => {
   const {
     cities,
     cityInput,

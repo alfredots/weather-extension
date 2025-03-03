@@ -2,9 +2,7 @@ import { useAppContentScriptModel } from '@/content-script/components/AppContent
 import { ShadowDom } from '@/shared/components/ShadowDom';
 import { WeatherCard } from '@/shared/components/WeatherCard';
 
-type AppContentScriptViewProps = ReturnType<typeof useAppContentScriptModel>;
-
-export const AppContentScriptView = (props: AppContentScriptViewProps) => {
+export const AppContentScriptView = (props: ReturnType<typeof useAppContentScriptModel>) => {
   const { isActive, options, getWeatherData, setIsActive } = props;
 
   return isActive && options?.homeCity ? (
