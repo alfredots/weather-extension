@@ -7,20 +7,20 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/alfredots/weather-extension">
 
-  <a href="https://github.com/alfredots/weather-extension/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alfredots/weather-extension">
+  <a href="https://github.com/alfredots/weather-extension/commits/main" style="underline:none;">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alfredots/weather-extension"/>
   </a>
 
-  <a href="https://github.com/alfredots/FindHouses/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/alfredots/weather-extension">
+  <a href="https://github.com/alfredots/FindHouses/issues" style="underline:none;">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/alfredots/weather-extension"/>
   </a>
 
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen"/>
 </p>
 
 <p align="center">
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#rocket-requisitos">Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-requisitos">Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-aprendizado">Aprendizado</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-comandos">Comandos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
