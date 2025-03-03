@@ -1,5 +1,5 @@
 <h1 align="center">
-🌤️ Weather Extension :🌤️
+🌤️ Weather Extension 🌤️
 </h1>
 
 <p align="center">
@@ -7,7 +7,7 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/alfredots/weather-extension">
 
-  <a href="https://github.com/alfredots/weather-extension/commits/main" style="background-color:red;">
+  <a href="https://github.com/alfredots/weather-extension/commits/main">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alfredots/weather-extension"/>
   </a>
 
