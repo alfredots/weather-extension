@@ -3,5 +3,5 @@ export enum Actions {
 }
 
 export enum Messages {
-  TOGGLE_OVERLAY
+  TOGGLE_OVERLAY = 'toggle_overlay'
 }

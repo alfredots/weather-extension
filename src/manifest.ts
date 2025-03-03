@@ -26,8 +26,7 @@ export const manifest = defineManifest({
   content_scripts: [
     {
       matches: ['<all_urls>'],
-      js: ['src/content-script/AppContentScript.tsx'],
-      run_at: 'document_idle'
+      js: ['src/content-script/AppContentScript.tsx']
     }
   ],
   web_accessible_resources: [

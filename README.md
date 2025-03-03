@@ -77,7 +77,7 @@ Esse projeto foi desenvolvido com o objetivo de aprender a utilização do uso d
 
 - Você precisa instalar [Node.js](https://nodejs.org/en/download/) na versão 18 em diante.
 
-## ✈️ Tecnologias
+## 🛠️ Tecnologias
 
 ---
 
