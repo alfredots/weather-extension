@@ -7,12 +7,12 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/alfredots/weather-extension">
 
-  <a href="https://github.com/alfredots/weather-extension/commits/main" style="text-decoration: none;">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alfredots/weather-extension"/>
+  <a href="https://github.com/alfredots/weather-extension/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alfredots/weather-extension" style="text-decoration: none;"/>
   </a>
 
-  <a href="https://github.com/alfredots/FindHouses/issues" style="text-decoration: none;">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/alfredots/weather-extension"/>
+  <a href="https://github.com/alfredots/FindHouses/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/alfredots/weather-extension" style="text-decoration: none;"/>
   </a>
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen"/>
