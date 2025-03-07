@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
 import { Typography, Card, CardContent, Box, CardActions, Button, Grid } from '@mui/material';
 import { GetWeatherData } from 'domain/use-cases/get-weather-data';
-import { OpenWeatherTempScale } from '@/application/dto/weather-data-dto';
 import { useWeatherCard } from '@/shared/components/WeatherCard/use-weather-card';
+import { TemperatureScale } from '@/application/contracts';
 import './WeatherCard.css';
 
 type WeatherCardProps = {
   city: string;
-  tempScale: OpenWeatherTempScale;
+  tempScale: TemperatureScale;
   onDelete?: () => void;
   getWeatherData: GetWeatherData;
   isModal?: boolean;

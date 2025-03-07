@@ -1,10 +1,10 @@
-import { OpenWeatherTempScale } from '@/application/dto/weather-data-dto';
+import { TemperatureScale } from '@/application/contracts/weather';
 
 export type LocalStorageContent = {
   cities: string[];
   options: {
     homeCity: string;
-    tempScale: OpenWeatherTempScale;
+    tempScale: TemperatureScale;
     hasAutoOverlay: boolean;
   };
 };

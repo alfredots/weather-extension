@@ -1,10 +1,10 @@
+import { TemperatureScale } from '@/application/contracts';
 import { WeatherData } from '@/domain/entities';
 import { GetWeatherData } from '@/domain/use-cases/get-weather-data';
 import { useAsyncReducer } from '@/shared/hooks/use-async-reducer';
-import { OpenWeatherTempScale } from '@/application/dto/weather-data-dto';
 import { useCallback, useEffect } from 'react';
 
-export const useWeatherCard = (city: string, scale: OpenWeatherTempScale, getWeatherData: GetWeatherData) => {
+export const useWeatherCard = (city: string, scale: TemperatureScale, getWeatherData: GetWeatherData) => {
   const [{ data: weatherData, ...rest }, dispatch] = useAsyncReducer<WeatherData | null>(null);
 
   const handleWeatherData = useCallback(async () => {

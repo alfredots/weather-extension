@@ -1,10 +1,11 @@
-import { OpenWeatherTempScale, WeatherDataDto } from '@/application/dto/weather-data-dto';
+import { TemperatureScale } from '@/application/contracts';
+import { WeatherDataDto } from '@/application/dto/weather-data-dto';
 import { WeatherData } from '@/domain/entities';
 import { DefaultError } from '@/domain/errors/DefaultError';
 import { HttpStatusCode, IHttpClient } from '@/infra/http/http-client-contract';
 
 export interface IWeatherGateway {
-  getWeatherData(city: string, scale: OpenWeatherTempScale): Promise<WeatherData>;
+  getWeatherData(city: string, scale: TemperatureScale): Promise<WeatherData>;
 }
 
 function getWeatherIconSrc(iconCode: string) {
@@ -18,7 +19,7 @@ export class WeatherGateway implements IWeatherGateway {
     private readonly http: IHttpClient
   ) {}
 
-  async getWeatherData(city: string, scale: OpenWeatherTempScale = 'metric'): Promise<WeatherData> {
+  async getWeatherData(city: string, scale: TemperatureScale = 'metric'): Promise<WeatherData> {
     const httpResponse = await this.http.request<WeatherDataDto>({
       url: `${this.url}?q=${city}&units=${scale}&appid=${this.key}`,
       method: 'get'
