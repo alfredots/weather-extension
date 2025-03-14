@@ -1,8 +1,8 @@
-import { AddNewCity } from '@/domain/use-cases/add-new-city';
-import { ILocalStorage } from '@/infra/cache/local-storage-contract';
+import { StorageGateway } from '@/domain/gateways/storage-gateway.interface';
+import { UseCase } from '@/domain/utils/use-case';
 
-export class AddNewCityImpl implements AddNewCity {
-  constructor(private readonly localStorage: ILocalStorage) {}
+export class AddNewCity implements UseCase<{ city: string }, Promise<void>> {
+  constructor(private readonly localStorage: StorageGateway) {}
 
   async execute(param: { city: string }): Promise<void> {
     const { cities } = await this.localStorage.get(['cities']);

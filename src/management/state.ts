@@ -1,6 +1,6 @@
-import { LocalStorageContent } from '@/application/contracts';
+import { StorageContent } from '@/domain/entities/storage-content.entity';
 
-export const initialState: LocalStorageContent = {
+export const initialState: StorageContent = {
   cities: [],
   options: {
     homeCity: 'São Luís',

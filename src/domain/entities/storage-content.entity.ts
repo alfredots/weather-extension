@@ -1,6 +1,6 @@
-import { TemperatureScale } from '@/application/contracts/weather';
+import { TemperatureScale } from '@/domain/utils/temperature-scale';
 
-export type LocalStorageContent = {
+export type StorageContent = {
   cities: string[];
   options: {
     homeCity: string;

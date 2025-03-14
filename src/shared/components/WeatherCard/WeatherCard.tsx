@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { Typography, Card, CardContent, Box, CardActions, Button, Grid } from '@mui/material';
-import { GetWeatherData } from 'domain/use-cases/get-weather-data';
+import { GetWeatherData } from '@/domain/use-cases/get-weather-data.use-case';
 import { useWeatherCard } from '@/shared/components/WeatherCard/use-weather-card';
-import { TemperatureScale } from '@/application/contracts';
+import { TemperatureScale } from '@/domain/utils/temperature-scale';
 import './WeatherCard.css';
 
 type WeatherCardProps = {

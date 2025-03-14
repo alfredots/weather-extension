@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
-import { HttpRequest, HttpResponse, IHttpClient } from '@/infra/http/http-client-contract';
+import { HttpRequest, HttpResponse, HttpClient } from '@/infra/http/http-client-contract';
 
 export interface ErrorDetail {
   code: string;
@@ -23,7 +23,7 @@ export interface BackendErrorResponse {
   success?: boolean; // Campo opcional, presente no segundo objeto
 }
 
-export class AxiosHttpClient implements IHttpClient {
+export class AxiosHttpClient implements HttpClient {
   async request<R>(data: HttpRequest): Promise<HttpResponse<R>> {
     let axiosResponse: AxiosResponse;
 

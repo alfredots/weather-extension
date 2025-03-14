@@ -1,6 +1,6 @@
-import { TemperatureScale } from '@/application/contracts';
-import { WeatherData } from '@/domain/entities';
-import { GetWeatherData } from '@/domain/use-cases/get-weather-data';
+import { WeatherData } from '@/domain/entities/weather-data.entity';
+import { GetWeatherData } from '@/domain/use-cases/get-weather-data.use-case';
+import { TemperatureScale } from '@/domain/utils/temperature-scale';
 import { useAsyncReducer } from '@/shared/hooks/use-async-reducer';
 import { useCallback, useEffect } from 'react';
 

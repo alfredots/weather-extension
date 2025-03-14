@@ -1,4 +1,4 @@
-export type WeatherDataDto = {
+export type WeatherDataRemoteDto = {
   coord: {
     lon: number;
     lat: number;

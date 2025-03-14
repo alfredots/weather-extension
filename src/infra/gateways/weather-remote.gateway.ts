@@ -1,26 +1,23 @@
-import { TemperatureScale } from '@/application/contracts';
-import { WeatherDataDto } from '@/application/dto/weather-data-dto';
-import { WeatherData } from '@/domain/entities';
-import { DefaultError } from '@/domain/errors/DefaultError';
-import { HttpStatusCode, IHttpClient } from '@/infra/http/http-client-contract';
-
-export interface IWeatherGateway {
-  getWeatherData(city: string, scale: TemperatureScale): Promise<WeatherData>;
-}
+import { WeatherData } from '@/domain/entities/weather-data.entity';
+import { DefaultError } from '@/domain/errors/default.error';
+import { WeatherGateway } from '@/domain/gateways/weather-gateway.interface';
+import { TemperatureScale } from '@/domain/utils/temperature-scale';
+import { WeatherDataRemoteDto } from '@/infra/dto/weather-data-remote.dto';
+import { HttpClient, HttpStatusCode } from '@/infra/http/http-client-contract';
 
 function getWeatherIconSrc(iconCode: string) {
   return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 }
 
-export class WeatherGateway implements IWeatherGateway {
+export class WeatherRemoteGateway implements WeatherGateway {
   constructor(
     private readonly url: string,
     private readonly key: string,
-    private readonly http: IHttpClient
+    private readonly http: HttpClient
   ) {}
 
   async getWeatherData(city: string, scale: TemperatureScale = 'metric'): Promise<WeatherData> {
-    const httpResponse = await this.http.request<WeatherDataDto>({
+    const httpResponse = await this.http.request<WeatherDataRemoteDto>({
       url: `${this.url}?q=${city}&units=${scale}&appid=${this.key}`,
       method: 'get'
     });

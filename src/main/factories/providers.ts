@@ -1,3 +1,11 @@
-import { ExtensionProvider, IExtensionProvider } from '@/application/providers/extension-provider';
+import { ExtensionProvider } from '@/domain/providers/extension-provider.interface';
 
-export const makeExtensionProvider = (): IExtensionProvider => new ExtensionProvider();
+export class ExtensionChromeProvider implements ExtensionProvider {
+  setBadgeText(text: string) {
+    chrome.action.setBadgeText({
+      text
+    });
+  }
+}
+
+export const makeExtensionProvider = () => new ExtensionChromeProvider();

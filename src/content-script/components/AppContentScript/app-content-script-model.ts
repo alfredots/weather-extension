@@ -1,4 +1,4 @@
-import { GetWeatherData } from '@/domain/use-cases/get-weather-data';
+import { GetWeatherData } from '@/domain/use-cases/get-weather-data.use-case';
 import { Messages } from '@/main/enums';
 import { useStorageState } from '@/shared/hooks/use-storage-state';
 import { useState, useEffect } from 'react';
