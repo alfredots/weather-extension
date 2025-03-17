@@ -18,15 +18,6 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen"/>
 </p>
 
-<p align="center">
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-requisitos">Requisitos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-aprendizado">Aprendizado</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-comandos">Comandos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
-</p>
 <br>
 
 ## 💻 Projeto
@@ -35,7 +26,7 @@
 
 Esse projeto foi desenvolvido com o objetivo de aprender a utilização do uso de Extensões Chrome com seus recursos (LocalStorage, Context Menu, Alarms), além disso, utilização de arquitetura limpa em projetos frontend. A aplicação apresentação previsão do tempo como extensão através de badge, popup e elemento flutuante.
 
-## 💻 Features
+## 💻 Demonstração
 
 ### Popup
 
@@ -73,7 +64,7 @@ Esse projeto foi desenvolvido com o objetivo de aprender a utilização do uso d
 
 - Você precisa instalar [Node.js](https://nodejs.org/en/download/) na versão 18 em diante.
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias Utilizadas
 
 ---
 
@@ -82,6 +73,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Vite](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Material UI](https://chakra-ui.com/)
+- [OpenWeather API](https://openweathermap.org/)
 
 \* Para mais detalhes, veja o **[Package.json](./package.json)**
 
@@ -96,16 +88,44 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Chrome Extension API
 - Clean Architecture
 
-## 📃 Comandos
+## ⚡ Instalação
 
 ---
 
+### Instalação Manual
+
+Clone este repositório:
+
 ```bash
-$ git clone https://github.com/alfredots/weather-extension.git && cd weather-extension
-$ npm i
-$ npm run dev
+git clone
+https://github.com/alfredots/weather-extension.git
+cd weather-extension
 ```
 
-The app will be available for access on your browser at http://localhost:3000
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Compile o projeto:
+
+```bash
+npm run build
+```
+
+No Chrome, acesse `chrome://extensions/`.
+
+Ative o "Modo do desenvolvedor" no canto superior direito.
+
+Clique em "Carregar sem compactação" e selecione a pasta `build` gerada.
+
+⚙ Uso
+
+Depois de instalada, a extensão exibirá a previsão do tempo na interface do navegador. Certifique-se de permitir as permissões necessárias para acessar a localização.
+
+## 📝 Licença
+
+Este projeto está licenciado sob a [MIT License](https://opensource.org/licenses/MIT).
 
 Feito com ❤️ por Alfredo Tito <img src="https://raw.githubusercontent.com/Douglasproglima/douglasproglima/master/gifs/Hi.gif" width="30px"></h2> [Entre em contato!](https://www.linkedin.com/in/alfredo-tito-837429ba/)
